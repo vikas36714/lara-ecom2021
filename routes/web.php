@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Site\CategoryController;
+use App\Http\Controllers\Site\ProductController;
+use App\Http\Controllers\Site\CartController;
+use App\Http\Controllers\Site\CheckoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +28,26 @@ Route::get('/clear-cache', function () {
 // Route::view('/admin', 'admin.dashboard.index');
 // Route::view('/admin/login', 'admin.auth.login');
 
-Route::view('/', 'site.pages.homepage');
-
 Auth::routes();
 
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login');
+Route::view('/', 'site.pages.homepage');
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
+//ADD TO CART//
+Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name('product.add.cart');
+Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
+Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');
+    Route::post('/checkout/order', [CheckoutController::class, 'placeOrder'])->name('checkout.place.order');
+    Route::get('checkout/payment/complete', [CheckoutController::class, 'complete'])->name('checkout.payment.complete');
+    Route::get('account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
+
+});
 require 'admin.php';
 
 

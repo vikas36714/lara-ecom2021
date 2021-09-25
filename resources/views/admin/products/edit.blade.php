@@ -222,7 +222,7 @@
                                         <div class="col-md-3">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <img src="{{ asset('storage/'.$image->full) }}" id="brandLogo" class="img-fluid" alt="img">
+                                                    <img src="{{ asset('public/storage/'.$image->full) }}" id="brandLogo" class="img-fluid" alt="img">
                                                     <a class="card-link float-right text-danger" href="{{ route('admin.products.images.delete', $image->id) }}">
                                                         <i class="fa fa-fw fa-lg fa-trash"></i>
                                                     </a>
