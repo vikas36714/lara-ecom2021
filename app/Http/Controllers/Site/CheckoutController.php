@@ -31,6 +31,7 @@ class CheckoutController extends Controller
 
         // You can add more control here to handle if the order
         // is not stored properly
+        
         if ($order) {
             $this->payPal->processPayment($order);
         }

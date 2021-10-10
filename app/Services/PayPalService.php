@@ -100,7 +100,7 @@ class PayPalService
                 ->setTransactions(array($transaction));
 
         try {
-
+            
             $payment->create($this->payPal);
 
         } catch (PayPalConnectionException $exception) {

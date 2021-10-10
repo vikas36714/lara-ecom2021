@@ -5,6 +5,7 @@ use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\CheckoutController;
+use App\Http\Controllers\SocialController;
 
 
 /*
@@ -31,6 +32,10 @@ Route::get('/clear-cache', function () {
 Auth::routes();
 
 Route::view('/', 'site.pages.homepage');
+
+Route::get('login/{provider}', [SocialController::class, 'redirect']);
+Route::get('login/{provider}/callback',[SocialController::class, 'Callback']);
+
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');

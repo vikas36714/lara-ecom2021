@@ -47,6 +47,32 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block"> Login </button>
                             </div>
+                             
+                            {{-- Login with Facebook --}}
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="btn" href="{{ url('login/facebook') }}"
+                                    style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                                    Login with Facebook
+                                </a>
+                            </div>
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="btn" href="{{ url('login/google') }}"
+                                    style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                                    Login with Google
+                                </a>
+                            </div>
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="btn" href="{{ url('login/facebook') }}"
+                                    style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                                    Login with Twiter
+                                </a>
+                            </div>
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="btn" href="{{ url('login/facebook') }}"
+                                    style="background: #3B5499; color: #ffffff; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
+                                    Login with Github
+                                </a>
+                            </div>
                         </form>
                     </article>
                     <div class="border-top card-body text-center">Don't have an account? <a href="{{ route('register') }}">Sign Up</a></div>
